@@ -4,152 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaixBlox Systems | Language-Agnostic Framework</title>
-    <style>
-        :root {
-            --primary: #2C3E50;
-            --secondary: #3498DB;
-            --accent: #E74C3C;
-            --light: #ECF0F1;
-            --dark: #2C3E50;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<style>
+    :root {
+        --font-heading: 'Bebas Neue', sans-serif;
+        --font-body: 'Montserrat', sans-serif;
+        --font-accent: 'Rajdhani', sans-serif;
+        --primary: #0E4D6E;       /* Deep teal-blue */
+        --secondary: #4FC3F7;     /* Light blue */
+        --accent: #2ED573;        /* Soft green-teal */
+        --light: #F8F9FA;         /* Light background */
+        --dark: #333333;          /* Dark text */
+        --glass: rgba(240, 250, 255, 0.85);
+        --glass-border: rgba(142, 216, 238, 0.6);
+        --glass-shadow: 0 4px 15px rgba(142, 216, 238, 0.2);
+        --box-shadow: 0 6px 15px rgba(142, 216, 238, 0.2);
+    }
 
-        body {
-            font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
-            color: var(--dark);
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
+    body {
+        font-family: var(--font-body);
+        margin: 0;
+        padding: 0;
+        color: var(--dark);
+        line-height: 1.6;
+        background: linear-gradient(135deg, #F0F9FF 0%, #E6F7FF 100%);
+    }
 
-        header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-windmill-image.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+    header {
+        background: linear-gradient(rgba(240, 250, 255, 0.95), rgba(240, 250, 255, 0.95)),
+                    url('your-windmill-image.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
 
+    .logo {
+        font-family: var(--font-heading);
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tagline {
+        font-family: var(--font-body);
+        font-size: 1.6rem;
+        font-weight: 600;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        padding: 20px;
+        border-radius: 10px;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--glass-shadow);
+    }
+
+    .cta-button {
+        font-family: var(--font-accent);
+        font-weight: 600;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, var(--secondary), var(--accent));
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        box-shadow: var(--box-shadow);
+        border: 1px solid rgba(79, 195, 247, 0.4);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(79, 195, 247, 0.3);
+        background: linear-gradient(90deg, var(--accent), var(--secondary));
+    }
+
+    section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-family: var(--font-heading);
+        text-align: center;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+        color: var(--primary);
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--secondary), var(--accent));
+        margin: 15px auto;
+        border-radius: 2px;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .feature-card {
+        font-family: var(--font-body);
+        background: var(--glass);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        transition: all 0.3s;
+        border: 1px solid var(--glass-border);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 25px rgba(79, 195, 247, 0.2);
+    }
+
+    .feature-icon i {
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, var(--secondary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
+
+    .feature-title {
+        font-family: var(--font-accent);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    .demo-video {
+        font-family: var(--font-body);
+        text-align: center;
+        margin: 50px 0;
+        backdrop-filter: blur(5px);
+        background: var(--glass);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--glass-shadow);
+    }
+
+    .demo-video iframe {
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        border: none;
+    }
+
+    footer {
+        font-family: var(--font-body);
+        background: white;
+        color: var(--dark);
+        text-align: center;
+        padding: 30px 20px;
+        box-shadow: 0 -4px 10px rgba(142, 216, 238, 0.1);
+    }
+
+    @media (max-width: 768px) {
         .logo {
             font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-
         .tagline {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
+            font-size: 1.2rem;
         }
-
         .cta-button {
-            background-color: var(--secondary);
-            color: white;
             padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
+            font-size: 1rem;
         }
+    }
+</style>
 
-        .cta-button:hover {
-            background-color: var(--accent);
-        }
 
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            color: var(--primary);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        footer {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .demo-video {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .demo-video video {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .tagline {
-                font-size: 1.2rem;
-            }
-            .cta-button {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="logo">PAIXBLOX</div>
         <div class="tagline">
-            The world's first language-agnostic framework. Bridge any code, anywhere—without VMs or WASM.
+            Language-agnostic System. Bridge any code, without VMs or WASM.
         </div>
         <a href="#demo" class="cta-button">See How It Works</a>
     </header>
@@ -194,7 +250,7 @@
         <h2 class="section-title">See PaixBlox in Action</h2>
         <div class="demo-video">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rB5Txa7PrxU?si=gT9eIIV_3daLaKXh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p>Watch PaixBlox process real-time market data in Python, C++, and JavaScript—all in one pipeline.</p>
+            <p>Paixblox.com</p>
         </div>
     </section>
 
