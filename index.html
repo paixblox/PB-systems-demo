@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaixBlox Systems | Language-Agnostic Framework</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --light: #ECF0F1;
+            --dark: #2C3E50;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-windmill-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .demo-video {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .demo-video video {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 1.2rem;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">PAIXBLOX</div>
+        <div class="tagline">
+            The world's first language-agnostic framework. Bridge any code, anywhere—without VMs or WASM.
+        </div>
+        <a href="#demo" class="cta-button">See How It Works</a>
+    </header>
+
+    <section id="features">
+        <h2 class="section-title">Why PaixBlox?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌉</div>
+                <div class="feature-title">Language-Agnostic</div>
+                <p>Write components in Python, C++, Rust, or any language. PaixBlox bridges them natively.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Native Speed</div>
+                <p>No VMs or WASM overhead. Run at the speed of your hardware.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">Offline & Secure</div>
+                <p>Works in air-gapped environments. No cloud or API dependencies.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Real-Time Mutation</div>
+                <p>Transform and analyze data on-the-fly with custom metrics and logic.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <div class="feature-title">Legacy Modernization</div>
+                <p>Integrate COBOL, Fortran, or any legacy code with modern systems.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-title">Universal Compatibility</div>
+                <p>Deploy anywhere: edge devices, servers, or embedded systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo">
+        <h2 class="section-title">See PaixBlox in Action</h2>
+        <div class="demo-video">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rB5Txa7PrxU?si=gT9eIIV_3daLaKXh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>Watch PaixBlox process real-time market data in Python, C++, and JavaScript—all in one pipeline.</p>
+        </div>
+    </section>
+
+    <section id="use-cases">
+        <h2 class="section-title">Use Cases</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">Algorithmic Trading</div>
+                <p>Combine Python analytics, C++ execution, and JavaScript UIs in one framework.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">Defense Systems</div>
+                <p>Bridge legacy defense code with modern languages—securely and offline.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏭</div>
+                <div class="feature-title">Industrial IoT</div>
+                <p>Run real-time analytics on edge devices in any language.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 PaixBlox Systems. All rights reserved.</p>
+        <p>Built with ❤️ for developers, by veterans.</p>
+    </footer>
+</body>
+</html>
