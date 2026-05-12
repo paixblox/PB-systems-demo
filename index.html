@@ -3,154 +3,326 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PAIXBLOX Operational Coordination</title>
+<title>PAIXBLOX Operational Continuity Demo</title>
 <style>
 :root {
-  --brand:#4A90E2;
-  --brand2:#357ABD;
-  --accent:#FDB94E;
-  --ink:#0f172a;
-  --muted:#475569;
-  --bg:#f8fafc;
-  --line:#e2e8f0;
-  --card:#ffffff;
-  --good:#10b981;
-  --warn:#f59e0b;
-  --bad:#ef4444;
-  --shadow:0 18px 42px rgba(2,6,23,.12);
-  --radius:18px;
+  --navy:#06142b;
+  --navy2:#0a234d;
+  --blue:#0757c8;
+  --blue2:#0a7cff;
+  --gold:#d99005;
+  --ink:#081224;
+  --muted:#647084;
+  --line:#d9e3f0;
+  --soft:#f5f8fc;
+  --white:#ffffff;
+  --green:#257a42;
+  --red:#c81717;
+  --shadow:0 28px 80px rgba(7,22,46,.13);
+  --softshadow:0 14px 40px rgba(7,22,46,.08);
 }
+
 * { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
   margin:0;
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:var(--bg);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color:var(--ink);
-}
-.fullbleed {
-  position:relative;
-  left:50%;
-  right:50%;
-  margin-left:-50vw;
-  margin-right:-50vw;
-  width:100vw;
-}
-.wrap {
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 22px;
-}
-.hero {
   background:
-    radial-gradient(circle at 18% 14%, rgba(253,185,78,.30), transparent 26%),
-    radial-gradient(circle at 86% 18%, rgba(255,255,255,.17), transparent 28%),
-    linear-gradient(135deg,var(--brand) 0%,var(--brand2) 100%);
-  color:#fff;
-  padding:70px 0 42px;
+    radial-gradient(circle at 14% 8%, rgba(10,124,255,.12), transparent 30%),
+    radial-gradient(circle at 86% 0%, rgba(217,144,5,.12), transparent 32%),
+    linear-gradient(180deg,#f9fbff 0%,#edf3f9 100%);
 }
+
+a { color:inherit; }
+.wrap { max-width:1180px; margin:0 auto; padding:0 22px; }
+
+.hero {
+  position:relative;
+  overflow:hidden;
+  color:white;
+  background:
+    radial-gradient(circle at 82% 8%, rgba(10,124,255,.45), transparent 32%),
+    radial-gradient(circle at 16% 70%, rgba(217,144,5,.20), transparent 34%),
+    linear-gradient(135deg,#06142b 0%,#082657 58%,#06142b 100%);
+  padding:30px 0 80px;
+}
+
+.hero:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.75),transparent 72%);
+}
+
 .brand-row {
+  position:relative;
+  z-index:1;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
-  margin-bottom:34px;
+  gap:18px;
+  margin-bottom:70px;
 }
+
 .logo {
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:-.03em;
+  font-size:25px;
+  font-weight:950;
+  letter-spacing:-.06em;
 }
-.veteran {
-  font-size:12px;
-  font-weight:800;
-  color:#eaf4ff;
-  border:1px solid rgba(255,255,255,.28);
-  background:rgba(255,255,255,.09);
-  padding:7px 11px;
+.logo span { color:var(--gold); }
+
+.nav-shell {
+  display:flex;
+  gap:7px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.07);
+  border-radius:999px;
+  backdrop-filter:blur(18px);
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+}
+.nav-shell a {
+  text-decoration:none;
+  color:#d8e6f9;
+  font-size:13px;
+  font-weight:850;
+  padding:9px 12px;
   border-radius:999px;
 }
+.nav-shell a:hover { background:rgba(255,255,255,.10); color:white; }
+
+.hero-grid {
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:center;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.08);
+  border-radius:999px;
+  color:#bcd7ff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
 h1 {
-  font-size:clamp(34px,5vw,58px);
-  line-height:.98;
-  max-width:930px;
-  margin:0 0 16px;
-  letter-spacing:-.055em;
+  margin:22px 0 16px;
+  max-width:800px;
+  font-size:clamp(46px,7.4vw,92px);
+  line-height:.9;
+  letter-spacing:-.075em;
 }
 .lead {
-  max-width:880px;
-  font-size:18px;
-  color:#eff6ff;
-  line-height:1.5;
+  max-width:700px;
   margin:0;
+  color:#cfdbeb;
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.45;
 }
-.hero-cards {
+
+.cta-row {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:30px;
+}
+
+.btn, button, .request-btn {
+  appearance:none;
+  border:1px solid transparent;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:48px;
+  padding:0 18px;
+  border-radius:14px;
+  font-weight:900;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, border .18s ease, background .18s ease;
+}
+.btn:hover, button:hover, .request-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 18px 38px rgba(7,22,46,.16);
+}
+.btn.primary, button.primary, .request-btn {
+  background:white;
+  color:var(--navy);
+  border-color:white;
+}
+.btn.secondary, button {
+  background:rgba(255,255,255,.08);
+  color:#eaf2ff;
+  border-color:rgba(255,255,255,.16);
+}
+
+.hero-panel {
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:34px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.06));
+  box-shadow:0 30px 90px rgba(0,0,0,.24);
+  backdrop-filter:blur(22px);
+  padding:18px;
+}
+
+.signal-card {
+  border-radius:24px;
+  background:#07162e;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.signal-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  color:#d9e7fa;
+  border-bottom:1px solid rgba(255,255,255,.09);
+  font-size:13px;
+  font-weight:850;
+}
+
+.status-dot {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(37,122,66,.18);
+  color:#baf1c9;
+}
+.status-dot:before {
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#38c172;
+  box-shadow:0 0 0 5px rgba(56,193,114,.14);
+}
+
+.signal-body {
+  padding:18px;
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.signal-row {
+  display:grid;
+  grid-template-columns:36px 1fr auto;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+}
+.signal-num {
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:rgba(10,124,255,.16);
+  color:#9dcbff;
+  font-weight:950;
+}
+.signal-row strong { display:block; font-size:14px; }
+.signal-row span { color:#9fb2ce; font-size:12px; }
+.signal-badge { color:#d99005; font-size:12px; font-weight:950; }
+
+.hero-cards {
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:14px;
-  margin-top:24px;
+  margin-top:42px;
 }
 .hero-card {
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.19);
-  box-shadow:0 10px 30px rgba(2,6,23,.12) inset;
-  border-radius:16px;
-  padding:16px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  padding:18px;
+  backdrop-filter:blur(16px);
 }
 .hero-card .label {
-  color:#dbeafe;
+  color:#adc7e9;
   font-size:12px;
-  font-weight:800;
+  font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.08em;
+  letter-spacing:.09em;
 }
 .hero-card .value {
-  font-size:28px;
-  font-weight:900;
-  margin-top:6px;
-  color:#fff;
+  margin-top:8px;
+  color:white;
+  font-size:23px;
+  line-height:1.05;
+  font-weight:950;
+  letter-spacing:-.045em;
 }
 .hero-card .sub {
-  font-size:12px;
-  color:#dbeafe;
+  margin-top:9px;
+  color:#c1d1e5;
+  font-size:13px;
   line-height:1.45;
-  margin-top:6px;
 }
-.demo-section {
-  padding:34px 0 56px;
-}
+
+main { padding:34px 0 0; }
+
 .demo {
-  background:linear-gradient(180deg,#ffffff,#f8fbff);
-  border:2px solid rgba(74,144,226,.22);
-  border-radius:20px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(217,227,240,.92);
+  border-radius:30px;
   box-shadow:var(--shadow);
-  padding:22px;
+  padding:24px;
+  margin-bottom:26px;
+  backdrop-filter:blur(16px);
 }
-.demo + .demo { margin-top:24px; }
 .demo-head {
   display:grid;
   grid-template-columns:1fr auto;
-  gap:18px;
+  gap:20px;
   align-items:start;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 .kicker {
-  color:#2563eb;
+  color:var(--blue);
   font-size:12px;
-  font-weight:900;
+  font-weight:950;
   text-transform:uppercase;
-  letter-spacing:.08em;
+  letter-spacing:.1em;
   margin-bottom:8px;
 }
 .demo h2 {
-  font-size:clamp(24px,3vw,34px);
-  margin:0 0 8px;
-  letter-spacing:-.035em;
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1;
+  letter-spacing:-.055em;
+  margin:0 0 10px;
+  color:var(--navy);
 }
 .demo-copy {
+  max-width:760px;
   color:var(--muted);
-  font-size:14px;
   line-height:1.55;
-  max-width:820px;
+  font-size:15px;
   margin:0;
 }
 .toolbar {
@@ -159,92 +331,50 @@ h1 {
   gap:9px;
   flex-wrap:wrap;
 }
-button, .request-btn {
-  appearance:none;
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--ink);
-  padding:11px 15px;
-  border-radius:10px;
-  font-weight:800;
-  cursor:pointer;
-  transition:.18s ease;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 5px 14px rgba(2,6,23,.05);
+.toolbar button {
+  color:var(--navy);
+  background:white;
+  border-color:var(--line);
+  box-shadow:0 8px 22px rgba(7,22,46,.06);
 }
-button:hover, .request-btn:hover {
-  transform:translateY(-1px);
-  border-color:#bfdbfe;
-  box-shadow:0 10px 22px rgba(2,6,23,.10);
+.toolbar button.primary {
+  background:var(--navy);
+  color:white;
+  border-color:var(--navy);
 }
-button.primary, .request-btn {
-  background:linear-gradient(180deg,var(--brand),var(--brand2));
-  color:#fff;
-  border-color:var(--brand2);
-}
-.scenario-strip {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-bottom:16px;
-}
-.scenario-card {
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:13px;
-  box-shadow:0 8px 22px rgba(2,6,23,.05);
-}
-.scenario-card .s-label {
-  font-size:11px;
-  color:#64748b;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.06em;
-}
-.scenario-card .s-value {
-  font-size:18px;
-  font-weight:950;
-  margin-top:6px;
-  line-height:1.15;
-}
-.scenario-card .s-note {
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.4;
-  margin-top:6px;
-}
+
 .compare {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px;
 }
 .panel {
+  position:relative;
   border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
-  background:#fff;
-  box-shadow:0 10px 26px rgba(2,6,23,.06);
+  border-radius:24px;
+  padding:18px;
+  background:white;
+  box-shadow:var(--softshadow);
+  overflow:hidden;
 }
-.panel.traditional {
-  background:linear-gradient(180deg,#fff,#fff7ed);
-  border-color:#fed7aa;
+.panel:before {
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:4px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
 }
-.panel.current {
-  background:linear-gradient(180deg,#fff,#f0f9ff);
-  border-color:#bfdbfe;
-}
+.panel.traditional:before { background:linear-gradient(90deg,#d99005,#c81717); }
+.panel.current:before { background:linear-gradient(90deg,#0757c8,#38c172); }
 .panel h3 {
+  margin:0 0 6px;
   font-size:20px;
-  margin:0 0 5px;
-  letter-spacing:-.02em;
+  letter-spacing:-.035em;
+  color:var(--navy);
 }
 .panel-desc {
-  font-size:13px;
   color:var(--muted);
+  font-size:13px;
   line-height:1.45;
   margin-bottom:14px;
 }
@@ -254,830 +384,833 @@ button.primary, .request-btn {
   gap:10px;
 }
 .metric {
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:13px;
-  background:rgba(255,255,255,.82);
+  border:1px solid #e0e8f3;
+  border-radius:18px;
+  padding:14px;
+  background:#f9fbfe;
 }
 .metric-label {
-  font-size:11px;
+  font-size:10px;
   text-transform:uppercase;
-  letter-spacing:.06em;
-  color:#64748b;
-  font-weight:900;
+  letter-spacing:.07em;
+  color:#718096;
+  font-weight:950;
 }
 .metric-value {
-  font-size:22px;
+  margin-top:7px;
+  font-size:20px;
+  line-height:1.08;
   font-weight:950;
-  margin-top:6px;
-  line-height:1.05;
+  letter-spacing:-.04em;
 }
-.good { color:var(--good); }
-.warn { color:var(--warn); }
-.bad { color:var(--bad); }
-.detail-grid {
+.good { color:var(--green); }
+.warn { color:var(--gold); }
+.bad { color:var(--red); }
+
+.detail-grid, .domain-grid {
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2,1fr);
   gap:16px;
   margin-top:16px;
 }
-.domain-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-.domain-card, .detail-box {
-  background:#fff;
+.domain-grid { grid-template-columns:repeat(4,1fr); }
+.detail-box, .domain-card, .scenario-card {
+  background:white;
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 8px 20px rgba(2,6,23,.05);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--softshadow);
 }
-.domain-card h4, .detail-box h4 {
-  margin:0 0 10px;
+.detail-box h4, .domain-card h4 {
+  margin:0 0 11px;
+  color:var(--navy);
   font-size:15px;
+  letter-spacing:-.02em;
 }
-.step-list {
-  display:grid;
-  gap:8px;
-}
+.step-list { display:grid; gap:8px; }
 .step {
   display:flex;
   justify-content:space-between;
   gap:12px;
   align-items:center;
-  padding:9px 10px;
-  border:1px solid var(--line);
+  padding:10px 12px;
+  border:1px solid #e0e8f3;
   border-radius:999px;
-  background:#f8fafc;
+  background:#f8fbff;
   font-size:12px;
 }
-.step span:first-child {
-  color:#334155;
-  font-weight:700;
-}
-.step span:last-child {
-  color:#64748b;
-  text-align:right;
-  font-weight:800;
-}
+.step span:first-child { color:#334155; font-weight:750; }
+.step span:last-child { color:#64748b; text-align:right; font-weight:900; }
+
 .event-line {
   margin-top:16px;
-  padding:13px 15px;
-  border-radius:14px;
-  background:#0f172a;
-  color:#e2e8f0;
-  font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding:15px 17px;
+  border-radius:18px;
+  background:var(--navy);
+  color:#dce8f8;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:12px;
-  min-height:44px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+  min-height:48px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
 }
 .context {
   margin-top:16px;
-  padding:14px 16px;
-  border-radius:14px;
-  background:#f8fafc;
-  border:1px dashed var(--line);
+  padding:16px 18px;
+  border-radius:18px;
+  background:#f8fbff;
+  border:1px solid #e0e8f3;
   color:var(--muted);
   font-size:14px;
   line-height:1.55;
 }
-.protection {
-  margin-top:10px;
-  color:#64748b;
+
+.scenario-strip {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.scenario-card .s-label {
+  font-size:11px;
+  color:#718096;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.scenario-card .s-value {
+  margin-top:7px;
+  font-size:20px;
+  font-weight:950;
+  line-height:1.1;
+  letter-spacing:-.04em;
+}
+.scenario-card .s-note {
+  margin-top:8px;
+  color:var(--muted);
   font-size:12px;
-  line-height:1.45;
+  line-height:1.4;
 }
-.actions {
-  display:flex;
-  justify-content:flex-start;
-  margin-top:18px;
+
+.capability {
+  margin:34px -22px 0;
+  padding:72px 22px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(10,124,255,.10), transparent 28%),
+    linear-gradient(180deg,#f8fbff,#eef4fb);
+  border-top:1px solid #dbe5f0;
 }
-footer {
-  color:#64748b;
+.capability-inner {
+  max-width:1120px;
+  margin:0 auto;
+}
+.capability-head {
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 30px;
+}
+.capability-head .kicker { margin-bottom:12px; }
+.capability-head h2 {
+  margin:0;
+  color:var(--navy);
+  font-size:clamp(34px,4.5vw,58px);
+  line-height:.96;
+  letter-spacing:-.065em;
+}
+.capability-head p {
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.55;
+  margin:16px auto 0;
+}
+.cap-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.cap-card {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:24px;
+  box-shadow:var(--softshadow);
+}
+.cap-icon {
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  color:white;
+  font-weight:950;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  margin-bottom:18px;
+}
+.cap-card:nth-child(2) .cap-icon { background:linear-gradient(135deg,var(--gold),#b97200); }
+.cap-card:nth-child(3) .cap-icon { background:linear-gradient(135deg,var(--green),#1a5d31); }
+.cap-card h3 {
+  color:var(--navy);
+  font-size:21px;
+  letter-spacing:-.04em;
+  margin:0 0 9px;
+}
+.cap-card p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.final-cta {
+  margin-top:0;
+  padding:76px 22px;
+  background:var(--navy);
+  color:white;
+  text-align:center;
+}
+.final-cta h2 {
+  margin:0;
+  font-size:clamp(36px,5vw,64px);
+  line-height:.94;
+  letter-spacing:-.07em;
+}
+.final-cta p {
+  max-width:760px;
+  margin:18px auto 0;
+  color:#c6d4e8;
+  font-size:18px;
+  line-height:1.55;
+}
+.final-cta .btn {
+  margin-top:30px;
+}
+.footer {
+  background:#050f21;
+  color:#8fa2bd;
+  padding:28px 22px;
+  text-align:center;
   font-size:12px;
-  padding:0 22px 28px;
 }
+.footer strong {
+  display:block;
+  color:#fff;
+  font-size:22px;
+  letter-spacing:-.055em;
+  margin-bottom:8px;
+}
+
 @media (max-width:980px) {
-  .hero-cards, .compare, .metrics, .demo-head, .scenario-strip, .detail-grid, .domain-grid { grid-template-columns:1fr; }
+  .hero-grid, .demo-head, .compare, .detail-grid, .scenario-strip, .domain-grid, .cap-grid { grid-template-columns:1fr; }
+  .hero-cards { grid-template-columns:1fr; }
   .toolbar { justify-content:flex-start; }
-  .hero { padding:42px 0 32px; }
-  .brand-row { margin-bottom:24px; }
+  .brand-row { align-items:flex-start; flex-direction:column; margin-bottom:42px; }
+  .nav-shell { flex-wrap:wrap; border-radius:22px; }
+  .hero { padding-bottom:54px; }
 }
 </style>
 </head>
 <body>
-  <section class="hero fullbleed">
-    <div class="wrap">
-      <div class="brand-row">
-        <div class="logo">PAIXBLOX</div>
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="logo">PAIXBL<span>O</span>X</div>
+      <nav class="nav-shell" aria-label="Demo navigation">
+        <a href="#demo">Demo</a>
+        <a href="#continuity">Overview</a>
+        <a href="#request">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
         
-      </div>
-
-      <h1>Operational coordination with fewer follow-up steps.</h1>
-      <p class="lead">
-        Teams stay informed as situations evolve, reducing coordination delays and unnecessary follow-up work.
-      </p>
-
-      <div class="hero-cards">
-        <div class="hero-card">
-          <div class="label">Company scenario</div>
-          <div class="value">Rapid response operations</div>
-          <div class="sub">Operational teams maintain visibility during changing field conditions and active incidents.</div>
-        </div>
-        <div class="hero-card">
-          <div class="label">What changes</div>
-          <div class="value">Reduced coordination overhead</div>
-          <div class="sub">Teams spend less time manually verifying operational updates.</div>
-        </div>
-        <div class="hero-card">
-          <div class="label">Why it matters</div>
-          <div class="value">Faster operational response</div>
-          <div class="sub">Operational visibility improves during fast-moving situations.</div>
+        <h1>Operational continuity for dynamic environments.</h1>
+        <p class="lead">
+          A high-level demonstration of aligned operational context, controlled visibility, and continuity during changing conditions.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#demo">View Demo →</a>
+          <a class="btn secondary" href="mailto:ecomill@paixblox.com?subject=PAIXBLOX%20Evaluation%20Request">Request Evaluation</a>
         </div>
       </div>
+
+      <div class="hero-panel" aria-hidden="true">
+        <div class="signal-card">
+          <div class="signal-top">
+            <span>Operational View</span>
+            <span class="status-dot">Continuity Mode</span>
+          </div>
+          <div class="signal-body">
+            <div class="signal-row">
+              <div class="signal-num">1</div>
+              <div><strong>Condition Changes</strong><span>Relevant context is updated.</span></div>
+              <div class="signal-badge">Aligned</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-num">2</div>
+              <div><strong>Teams Align</strong><span>Views remain consistent.</span></div>
+              <div class="signal-badge">Current</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-num">3</div>
+              <div><strong>Access Stays Controlled</strong><span>Visibility remains intentional.</span></div>
+              <div class="signal-badge">Verified</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-num">4</div>
+              <div><strong>Continuity Preserved</strong><span>Operations keep moving.</span></div>
+              <div class="signal-badge">Stable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="label">Scenario</div>
+        <div class="value">Changing operational conditions</div>
+        <div class="sub">A neutral, high-level walkthrough without implementation detail.</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">Outcome</div>
+        <div class="value">Aligned operational awareness</div>
+        <div class="sub">Teams maintain current context with fewer coordination gaps.</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">Value</div>
+        <div class="value">Continuity and control</div>
+        <div class="sub">Visibility improves while internal mechanics remain undisclosed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="demo" id="demo" aria-label="PAIXBLOX capability demonstration">
+    <div class="demo-head">
+      <div>
+        <div class="kicker">Interactive capability view</div>
+        <h2>See operational alignment at the outcome level.</h2>
+        <p class="demo-copy">
+          Use the controls to move through a simplified operational sequence. Explore a simplified operational continuity experience.
+        </p>
+      </div>
+      <div class="toolbar">
+        <button class="primary" id="startBtn">Detect</button>
+        <button id="dispatchBtn">Align</button>
+        <button id="escalateBtn">Protect</button>
+        <button id="resolveBtn">Continue</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="panel traditional">
+        <h3>Fragmented Operations</h3>
+        <div class="panel-desc">
+          Separate views can create visibility gaps and extra confirmation cycles.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">Visibility lag</div>
+            <div class="metric-value warn" id="tradDelay">0 sec</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Friction points</div>
+            <div class="metric-value warn" id="tradManual">0</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Leadership view</div>
+            <div class="metric-value bad" id="tradDecision">Pending</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel current">
+        <h3>Unified Operational View</h3>
+        <div class="panel-desc">
+          Relevant teams remain aligned around current operational context.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">Visibility lag</div>
+            <div class="metric-value good">Minimal</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Friction points</div>
+            <div class="metric-value good">Reduced</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Leadership view</div>
+            <div class="metric-value good">Current</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-box">
+        <h4>Fragmented view</h4>
+        <div class="step-list" id="traditionalSteps">
+          <div class="step"><span>No active checks</span><span>Ready</span></div>
+        </div>
+      </div>
+      <div class="detail-box">
+        <h4>Aligned view</h4>
+        <div class="step-list" id="currentSteps">
+          <div class="step"><span>Operational status</span><span>Ready</span></div>
+          <div class="step"><span>Team posture</span><span>Ready</span></div>
+          <div class="step"><span>Leadership awareness</span><span>Ready</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-line" id="eventLine">Demo ready. Select Detect to begin.</div>
+
+    <div class="context">
+      A streamlined operational continuity walkthrough.
     </div>
   </section>
 
-  <main class="wrap demo-section">
-<section class="demo" aria-label="Paixblox first responder behavior comparison">
-      <div class="demo-head">
-        <div>
-          <div class="kicker">Step 1: Interactive incident flow</div>
-          <h2>Start the call, dispatch units, escalate, and resolve</h2>
-          <p class="demo-copy">
-            Use the buttons to move an operational scenario through an active response workflow.
-          </p>
-        </div>
-        <div class="toolbar">
-          <button class="primary" id="startBtn">Start Call</button>
-          <button id="dispatchBtn">Dispatch Units</button>
-          <button id="escalateBtn">Escalate Call</button>
-          <button id="resolveBtn">Resolve</button>
-          <button id="resetBtn">Reset</button>
-        </div>
+  <section class="demo" id="continuity" aria-label="PAIXBLOX continuity sequence">
+    <div class="demo-head">
+      <div>
+        <div class="kicker">Continuity sequence</div>
+        <h2>Maintain visibility as conditions evolve.</h2>
+        <p class="demo-copy">
+          The sequence demonstrates a simplified outcome view across operational areas while keeping process logic generalized.
+        </p>
       </div>
-
-      <div class="compare">
-        <div class="panel traditional">
-          <h3>Traditional Environment</h3>
-          <div class="panel-desc">
-            The incident still moves forward, but each change may create follow-up checks, status calls, and delayed confidence.
-          </div>
-          <div class="metrics">
-            <div class="metric">
-              <div class="metric-label">Alignment delay</div>
-              <div class="metric-value warn" id="tradDelay">0 sec</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Manual steps</div>
-              <div class="metric-value warn" id="tradManual">0</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Command view</div>
-              <div class="metric-value bad" id="tradDecision">Pending</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel current">
-          <h3>Operational Coordination</h3>
-          <div class="panel-desc">
-            Teams maintain current operational visibility throughout active situations.
-          </div>
-          <div class="metrics">
-            <div class="metric">
-              <div class="metric-label">Alignment delay</div>
-              <div class="metric-value good">No observable delay</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Manual steps</div>
-              <div class="metric-value good">0</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Command view</div>
-              <div class="metric-value good">Current</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="detail-grid">
-        <div class="detail-box">
-          <h4>What traditional teams may need to verify</h4>
-          <div class="step-list" id="traditionalSteps">
-            <div class="step"><span>No active checks</span><span>Ready</span></div>
-          </div>
-        </div>
-        <div class="detail-box">
-          <h4>Current operational view</h4>
-          <div class="step-list" id="currentSteps">
-            <div class="step"><span>Incident status</span><span>Ready</span></div>
-            <div class="step"><span>Dispatch posture</span><span>Ready</span></div>
-            <div class="step"><span>Command awareness</span><span>Ready</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-line" id="eventLine">
-        Demo ready. Start the call.
-      </div>
-
-      <div class="context">
-        This page demonstrates how operational visibility and reduced coordination overhead can improve response workflows during active situations.
-      </div>
-
-      <div class="protection">
-        
-      </div>
-
-    </section>
-
-
-    <section class="demo" aria-label="Paixblox operational coordination sequence">
-      <div class="demo-head">
-        <div>
-          <div class="kicker">Step 2: See it all in action</div>
-          <h2>Operational coordination during active events</h2>
-          <p class="demo-copy">
-            This sequence demonstrates how operational teams maintain visibility during an evolving incident response.
-          </p>
-        </div>
-        <div class="toolbar">
-          <button class="primary" id="seeAllBtn">See It All In Action</button>
-          <button id="resetAllBtn">Reset</button>
-        </div>
-      </div>
-
-      <div class="scenario-strip">
-        <div class="scenario-card">
-          <div class="s-label">Incident</div>
-          <div class="s-value" id="allIncident">Ready</div>
-          <div class="s-note">The same response-company event moving through the operation.</div>
-        </div>
-        <div class="scenario-card">
-          <div class="s-label">Operations</div>
-          <div class="s-value" id="allOps">Standing by</div>
-          <div class="s-note">Call center and field teams stay current.</div>
-        </div>
-        <div class="scenario-card">
-          <div class="s-label">Logistics</div>
-          <div class="s-value" id="allLogistics">Ready</div>
-          <div class="s-note">Vehicle, equipment, and support status stay current.</div>
-        </div>
-        <div class="scenario-card">
-          <div class="s-label">Finance</div>
-          <div class="s-value" id="allFinance">Stable</div>
-          <div class="s-note">Overtime and delay exposure update with the event.</div>
-        </div>
-      </div>
-
-      <div class="domain-grid">
-        <div class="domain-card">
-          <h4>Dispatch / Call Center</h4>
-          <div class="step-list" id="allDispatchView">
-            <div class="step"><span>Call status</span><span>Ready</span></div>
-            <div class="step"><span>Unit assignment</span><span>Ready</span></div>
-            <div class="step"><span>Escalation posture</span><span>Normal</span></div>
-          </div>
-        </div>
-        <div class="domain-card">
-          <h4>Field Operations</h4>
-          <div class="step-list" id="allFieldView">
-            <div class="step"><span>Field unit</span><span>Available</span></div>
-            <div class="step"><span>Coverage</span><span>Covered</span></div>
-            <div class="step"><span>Response posture</span><span>Ready</span></div>
-          </div>
-        </div>
-        <div class="domain-card">
-          <h4>Logistics</h4>
-          <div class="step-list" id="allLogisticsView">
-            <div class="step"><span>Vehicle</span><span>Ready</span></div>
-            <div class="step"><span>Equipment kit</span><span>Ready</span></div>
-            <div class="step"><span>Support route</span><span>Ready</span></div>
-          </div>
-        </div>
-        <div class="domain-card">
-          <h4>Finance / Command</h4>
-          <div class="step-list" id="allFinanceView">
-            <div class="step"><span>Overtime risk</span><span>Low</span></div>
-            <div class="step"><span>Delay exposure</span><span>Low</span></div>
-            <div class="step"><span>Command picture</span><span>Current</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-line" id="allActionLog">
-        Ready. Run the full action sequence.
-      </div>
-
-      <div class="context">
-        The goal is reducing coordination overhead during changing operational conditions.
-      </div>
-    </section>
-
-
-    
-
-  
-
-<section style="padding:64px 20px; background:linear-gradient(135deg,#eefbf4,#dbeafe);">
-  <div style="max-width:1120px; margin:0 auto;">
-    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px;">
-      <div style="background:white; border:1px solid #e2e8f0; border-radius:18px; padding:34px 28px; box-shadow:0 14px 30px rgba(2,6,23,.10);">
-        <div style="font-size:44px; color:#2563eb; line-height:1; margin-bottom:28px;"><svg width="48" height="48" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
-    <circle cx="12" cy="7" r="3"></circle>
-    <circle cx="5" cy="17" r="3"></circle>
-    <circle cx="19" cy="17" r="3"></circle>
-    <line x1="12" y1="10" x2="5" y2="14"></line>
-    <line x1="12" y1="10" x2="19" y2="14"></line>
-    </svg></div>
-        <h3 style="font-size:24px; margin:0 0 14px; color:#0f172a;">Instant Collaboration</h3>
-        <p style="font-size:17px; line-height:1.55; color:#475569; margin:0;">Teams maintain operational awareness with fewer manual follow-ups.</p>
-      </div>
-
-      <div style="background:white; border:1px solid #e2e8f0; border-radius:18px; padding:34px 28px; box-shadow:0 14px 30px rgba(2,6,23,.10);">
-        <div style="font-size:44px; color:#9333ea; line-height:1; margin-bottom:28px;"><svg width="48" height="48" fill="none" stroke="#9333ea" stroke-width="2" viewBox="0 0 24 24">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-    </svg></div>
-        <h3 style="font-size:24px; margin:0 0 14px; color:#0f172a;">Faster Execution</h3>
-        <p style="font-size:17px; line-height:1.55; color:#475569; margin:0;">Fewer coordination steps means faster response and execution.</p>
-      </div>
-
-      <div style="background:white; border:1px solid #e2e8f0; border-radius:18px; padding:34px 28px; box-shadow:0 14px 30px rgba(2,6,23,.10);">
-        <div style="font-size:44px; color:#4f46e5; line-height:1; margin-bottom:28px;"><svg width="48" height="48" fill="none" stroke="#4f46e5" stroke-width="2" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9"></circle>
-    <path d="M8 12l2 2 4-4"></path>
-    </svg></div>
-        <h3 style="font-size:24px; margin:0 0 14px; color:#0f172a;">Seamless Integration</h3>
-        <p style="font-size:17px; line-height:1.55; color:#475569; margin:0;">Supports existing operational workflows with minimal disruption.</p>
+      <div class="toolbar">
+        <button class="primary" id="seeAllBtn">Run Sequence</button>
+        <button id="resetAllBtn">Reset</button>
       </div>
     </div>
-  </div>
-</section>
 
-<style>
-@media (max-width: 900px) {
-  section div[style*="grid-template-columns:repeat(3"] {
-    grid-template-columns:1fr !important;
-  }
-}
-</style>
-
-<section style="padding:60px 20px; text-align:center; background:linear-gradient(135deg,#eef3f7,#dbe7f1); border-top:1px solid #e2e8f0;">
-  <h2 style="font-size:32px; margin-bottom:20px; color:#0f172a;">Proven & Trusted</h2>
-
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-bottom:30px;">
-    <div style="background:white; padding:20px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.05); min-width:140px;">
-      <div style="font-size:12px; color:#64748b;">Copyright</div>
-      <div style="font-weight:800;">TXu 2-092-256</div>
+    <div class="scenario-strip">
+      <div class="scenario-card">
+        <div class="s-label">Condition</div>
+        <div class="s-value" id="allIncident">Ready</div>
+        <div class="s-note">A representative change moving through the operation.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="s-label">Operations</div>
+        <div class="s-value" id="allOps">Standing by</div>
+        <div class="s-note">Teams maintain current context.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="s-label">Support</div>
+        <div class="s-value" id="allLogistics">Ready</div>
+        <div class="s-note">Supporting views remain aligned.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="s-label">Leadership</div>
+        <div class="s-value" id="allFinance">Stable</div>
+        <div class="s-note">Decision visibility remains current.</div>
+      </div>
     </div>
-    <div style="background:white; padding:20px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.05); min-width:140px;">
-      <div style="font-size:12px; color:#64748b;">Copyright</div>
-      <div style="font-weight:800;">TXu 2-084-549</div>
+
+    <div class="domain-grid">
+      <div class="domain-card">
+        <h4>Operations</h4>
+        <div class="step-list" id="allDispatchView">
+          <div class="step"><span>Status</span><span>Ready</span></div>
+          <div class="step"><span>Alignment</span><span>Ready</span></div>
+          <div class="step"><span>Posture</span><span>Normal</span></div>
+        </div>
+      </div>
+      <div class="domain-card">
+        <h4>Team Visibility</h4>
+        <div class="step-list" id="allFieldView">
+          <div class="step"><span>Team status</span><span>Available</span></div>
+          <div class="step"><span>Coverage</span><span>Covered</span></div>
+          <div class="step"><span>Posture</span><span>Ready</span></div>
+        </div>
+      </div>
+      <div class="domain-card">
+        <h4>Support Systems</h4>
+        <div class="step-list" id="allLogisticsView">
+          <div class="step"><span>Support status</span><span>Ready</span></div>
+          <div class="step"><span>Resources</span><span>Ready</span></div>
+          <div class="step"><span>Pathway</span><span>Ready</span></div>
+        </div>
+      </div>
+      <div class="domain-card">
+        <h4>Leadership View</h4>
+        <div class="step-list" id="allFinanceView">
+          <div class="step"><span>Impact</span><span>Low</span></div>
+          <div class="step"><span>Workflow status</span><span>Low</span></div>
+          <div class="step"><span>Operational picture</span><span>Current</span></div>
+        </div>
+      </div>
     </div>
-    <div style="background:white; padding:20px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.05); min-width:140px;">
-      <div style="font-size:12px; color:#64748b;">Status</div>
-      <div style="font-weight:800;">🇺🇸 Veteran-Owned</div>
+
+    <div class="event-line" id="allActionLog">Ready. Run the continuity sequence.</div>
+
+    <div class="context">
+      Designed to demonstrate aligned operational visibility.
     </div>
-  </div>
-
-  <a href="mailto:ecomill@paixblox.com?subject=Full%20Demo%20Request"
-     style="display:inline-block; background:#eab308; color:#0f172a; font-weight:800; padding:16px 32px; border-radius:12px; text-decoration:none; font-size:18px;">
-     Request Full Demonstration
-  </a>
-
-  <div style="margin-top:14px; color:#475569;">See PAIXBLOX in action</div>
-</section>
-
-<footer style="background:#0b1220; color:#94a3b8; text-align:center; padding:40px 20px;">
-  <div style="font-size:28px; font-weight:900; color:#6366f1;">PAIXBLOX</div>
-  <div style="margin-top:10px;">Operational visibility with less coordination overhead.</div>
-  <div style="margin-top:14px; font-size:12px;">© 2026 PAIXBLOX. All rights reserved. | Veteran-Owned</div>
-</footer>
-
+  </section>
 </main>
 
-  <footer class="wrap">© 2026 Paixblox • Contact: ecomill@paixblox.com</footer>
+<section class="capability">
+  <div class="capability-inner">
+    <div class="capability-head">
+      <div class="kicker">Protected by design</div>
+      <h2>Operational continuity designed for modern environments.</h2>
+      <p>
+        Built to support aligned operational awareness, continuity, and controlled visibility across changing conditions.
+      </p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">↻</div>
+        <h3>Operational Alignment</h3>
+        <p>Shared context helps teams reduce visibility gaps as conditions change.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">▣</div>
+        <h3>Controlled Visibility</h3>
+        <p>The demo communicates access discipline without exposing enforcement methods.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">✓</div>
+        <h3>Continuity Focus</h3>
+        <p>The value centers on keeping operations moving through imperfect conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="request">
+  <h2>Connect with PAIXBLOX.</h2>
+  <p>
+    Learn more about the PAIXBLOX operational continuity approach and demonstration environment.
+  </p>
+  <a class="btn primary" href="mailto:ecomill@paixblox.com?subject=PAIXBLOX%20Controlled%20Evaluation%20Request">Email PAIXBLOX</a>
+</section>
+
+<footer class="footer">
+  <strong>PAIXBLOX</strong>
+  <div>Operational visibility with less coordination overhead.</div>
+  <div style="margin-top:12px;">© 2025 PAIXBLOX. All rights reserved.</div>
+</footer>
 
 <script>
-const $ = id => document.getElementById(id);
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (id) => document.getElementById(id);
 
-function stepRows(items) {
-  if (!items.length) return '<div class="step"><span>No active checks</span><span>Ready</span></div>';
-  return items.map(item => `<div class="step"><span>${item[0]}</span><span>${item[1]}</span></div>`).join("");
-}
+  const stepRows = (items) => {
+    if (!items || !items.length) {
+      return '<div class="step"><span>No active checks</span><span>Ready</span></div>';
+    }
+    return items.map(([label, value]) =>
+      `<div class="step"><span>${label}</span><span>${value}</span></div>`
+    ).join("");
+  };
 
-/* Operational coordination in action */
-const connected = {
-  running:false,
-  timers:[]
-};
+  const setText = (id, value) => {
+    const el = $(id);
+    if (el) el.textContent = value;
+  };
 
-function clearConnectedTimers() {
-  connected.timers.forEach(t => clearTimeout(t));
-  connected.timers = [];
-}
+  const setHTML = (id, value) => {
+    const el = $(id);
+    if (el) el.innerHTML = value;
+  };
 
-function setConnectedViews(payload) {
-  $("triggerState").textContent = payload.trigger;
-  $("coverageState").textContent = payload.coverage;
-  $("readinessState").textContent = payload.readiness;
-  $("costState").textContent = payload.cost;
-  $("personnelView").innerHTML = stepRows(payload.personnel);
-  $("operationsView").innerHTML = stepRows(payload.operations);
-  $("readinessView").innerHTML = stepRows(payload.ready);
-  $("businessView").innerHTML = stepRows(payload.business);
-  $("connectedLog").textContent = payload.log;
-}
+  const setClass = (id, value) => {
+    const el = $(id);
+    if (el) el.className = value;
+  };
 
-function resetConnected() {
-  clearConnectedTimers();
-  setConnectedViews({
-    trigger:"Ready",
-    coverage:"Covered",
-    readiness:"Aligned",
-    cost:"Stable",
-    personnel:[
-      ["Primary employee","Available"],
-      ["Appointment status","None active"],
-      ["Shift status","Covered"]
-    ],
-    operations:[
-      ["Work assignment","On schedule"],
-      ["Replacement pool","Standby"],
-      ["Supervisor view","Current"]
-    ],
-    ready:[
-      ["Operational readiness","Aligned"],
-      ["Schedule risk","Low"],
-      ["Decision posture","Stable"]
-    ],
-    business:[
-      ["Overtime exposure","None"],
-      ["Delay risk","Low"],
-      ["Cost posture","Stable"]
-    ],
-    log:"Ready. Run the connected scenario."
-  });
-}
+  const state = {
+    delay: 0,
+    manual: 0,
+    stage: "ready",
+    fragmented: [],
+    aligned: [
+      ["Operational status", "Ready"],
+      ["Team posture", "Ready"],
+      ["Leadership awareness", "Ready"]
+    ]
+  };
 
-function runConnectedScenario() {
-  clearConnectedTimers();
+  function updateComparison(message) {
+    setText("tradDelay", state.delay + " sec");
+    setText("tradManual", state.manual);
+    setHTML("traditionalSteps", stepRows(state.fragmented));
+    setHTML("currentSteps", stepRows(state.aligned));
+    setText("eventLine", message);
 
-  setConnectedViews({
-    trigger:"Appointment",
-    coverage:"Gap detected",
-    readiness:"Watching",
-    cost:"Reviewing",
-    personnel:[
-      ["Primary employee","Unavailable"],
-      ["Reason","Medical appointment"],
-      ["Shift status","Coverage needed"]
-    ],
-    operations:[
-      ["Work assignment","Needs replacement"],
-      ["Replacement pool","Searching"],
-      ["Supervisor view","Updated"]
-    ],
-    ready:[
-      ["Operational readiness","Watching"],
-      ["Schedule risk","Moderate"],
-      ["Decision posture","Needs coverage"]
-    ],
-    business:[
-      ["Overtime exposure","Possible"],
-      ["Delay risk","Moderate"],
-      ["Cost posture","Reviewing"]
-    ],
-    log:"Step 1: A single availability event changes personnel status and affects coverage, readiness, and cost posture."
-  });
+    setClass("tradDelay", state.delay > 22 ? "metric-value bad" : state.delay > 0 ? "metric-value warn" : "metric-value good");
+    setClass("tradManual", state.manual > 3 ? "metric-value bad" : state.manual > 0 ? "metric-value warn" : "metric-value good");
+  }
 
-  connected.timers.push(setTimeout(() => {
-    setConnectedViews({
-      trigger:"Appointment",
-      coverage:"Backup assigned",
-      readiness:"Recovering",
-      cost:"Contained",
-      personnel:[
-        ["Primary employee","Unavailable"],
-        ["Replacement employee","Qualified"],
-        ["Shift status","Reassigned"]
-      ],
-      operations:[
-        ["Work assignment","Reassigned"],
-        ["Required capability","Matched"],
-        ["Supervisor view","Current"]
-      ],
-      ready:[
-        ["Operational readiness","Recovering"],
-        ["Schedule risk","Reduced"],
-        ["Decision posture","Coverage identified"]
-      ],
-      business:[
-        ["Overtime exposure","Contained"],
-        ["Delay risk","Reduced"],
-        ["Cost posture","Contained"]
-      ],
-      log:"Step 2: Coverage is identified. The operational, readiness, and business views reflect the updated situation."
-    });
-  }, 1200));
+  function resetComparison() {
+    state.delay = 0;
+    state.manual = 0;
+    state.stage = "ready";
+    state.fragmented = [];
+    state.aligned = [
+      ["Operational status", "Ready"],
+      ["Team posture", "Ready"],
+      ["Leadership awareness", "Ready"]
+    ];
+    setText("tradDecision", "Pending");
+    setClass("tradDecision", "metric-value bad");
+    updateComparison("Demo ready. Select Detect to begin.");
+  }
 
-  connected.timers.push(setTimeout(() => {
-    setConnectedViews({
-      trigger:"Resolved",
-      coverage:"Covered",
-      readiness:"Aligned",
-      cost:"Stable",
-      personnel:[
-        ["Primary employee","Appointment noted"],
-        ["Replacement employee","Assigned"],
-        ["Shift status","Covered"]
-      ],
-      operations:[
-        ["Work assignment","On schedule"],
-        ["Required capability","Maintained"],
-        ["Supervisor view","Current"]
-      ],
-      ready:[
-        ["Operational readiness","Aligned"],
-        ["Schedule risk","Low"],
-        ["Decision posture","Ready"]
-      ],
-      business:[
-        ["Overtime exposure","Avoided"],
-        ["Delay risk","Low"],
-        ["Cost posture","Stable"]
-      ],
-      log:"Step 3: The event is resolved across all views. The important part is maintaining visibility as the scenario changes."
-    });
-  }, 2400));
-}
+  function startCall() {
+    state.stage = "detect";
+    state.delay = 7;
+    state.manual = 1;
+    state.fragmented = [
+      ["Confirm change context", "Review"],
+      ["Open operational view", "Pending"],
+      ["Notify lead", "Pending"]
+    ];
+    state.aligned = [
+      ["Operational status", "Change detected"],
+      ["Team posture", "Evaluating"],
+      ["Leadership awareness", "Current"]
+    ];
+    setText("tradDecision", "Reviewing");
+    setClass("tradDecision", "metric-value warn");
+    updateComparison("Change detected: fragmented teams begin verification while the unified view stays current.");
+  }
 
-/* Why it matters */
-const state = {
-  delay:0,
-  manual:0,
-  stage:"ready",
-  traditionalChecks:[],
-  aligned:[
-    ["Incident status","Ready"],
-    ["Dispatch posture","Ready"],
-    ["Command awareness","Ready"]
-  ]
-};
+  function dispatchUnits() {
+    if (state.stage === "ready") startCall();
+    state.stage = "align";
+    state.delay += 8;
+    state.manual += 2;
+    state.fragmented = [
+      ["Confirm team alignment", "Operations"],
+      ["Update team status", "Pending"],
+      ["Share context update", "Pending"],
+      ["Lead confirmation", "Pending"]
+    ];
+    state.aligned = [
+      ["Operational status", "Views aligned"],
+      ["Team posture", "Current"],
+      ["Team view", "Aware"],
+      ["Leadership awareness", "Current"]
+    ];
+    setText("tradDecision", "Delayed");
+    setClass("tradDecision", "metric-value warn");
+    updateComparison("Views aligned: relevant operational views update without showing internal mechanics.");
+  }
 
-function updateComparison(message) {
-  $("tradDelay").textContent = state.delay + " sec";
-  $("tradManual").textContent = state.manual;
-  $("traditionalSteps").innerHTML = stepRows(state.traditionalChecks);
-  $("currentSteps").innerHTML = stepRows(state.aligned);
-  $("eventLine").textContent = message;
+  function escalateCall() {
+    if (state.stage === "ready") startCall();
+    state.stage = "protect";
+    state.delay += 14;
+    state.manual += 3;
+    state.fragmented = [
+      ["Confirm condition change", "Review"],
+      ["Adjust support", "Pending"],
+      ["Alert relevant view", "Pending"],
+      ["Update leadership view", "Pending"],
+      ["Validate current context", "Manual"]
+    ];
+    state.aligned = [
+      ["Operational status", "Protected"],
+      ["Team posture", "Controlled"],
+      ["Team view", "Current"],
+      ["Leadership awareness", "Current"],
+      ["Decision view", "Ready"]
+    ];
+    setText("tradDecision", "Waiting");
+    setClass("tradDecision", "metric-value bad");
+    updateComparison("Access protected: visibility remains controlled while operational context stays aligned.");
+  }
 
-  $("tradDelay").className = state.delay > 22 ? "metric-value bad" : state.delay > 0 ? "metric-value warn" : "metric-value good";
-  $("tradManual").className = state.manual > 3 ? "metric-value bad" : state.manual > 0 ? "metric-value warn" : "metric-value good";
-}
+  function resolveCall() {
+    if (state.stage === "ready") startCall();
+    state.stage = "continue";
+    state.delay += 5;
+    state.manual += 1;
+    state.fragmented = [
+      ["Close operational view", "Operations"],
+      ["Confirm team status", "Review"],
+      ["Update final context", "Pending"],
+      ["Lead review", "Complete"]
+    ];
+    state.aligned = [
+      ["Operational status", "Continuity preserved"],
+      ["Team posture", "Stable"],
+      ["Team view", "Aligned"],
+      ["Leadership awareness", "Current"]
+    ];
+    setText("tradDecision", "Confirmed");
+    setClass("tradDecision", "metric-value warn");
+    updateComparison("Continuity preserved: the experience shows outcome-level alignment, not system logic.");
+  }
 
-function startCall() {
-  state.stage = "call";
-  state.delay = 9;
-  state.manual = 1;
-  state.traditionalChecks = [
-    ["Confirm caller details","Dispatch"],
-    ["Open incident record","Call center"],
-    ["Notify supervisor","Pending"]
-  ];
-  state.aligned = [
-    ["Incident status","Call opened"],
-    ["Dispatch posture","Evaluating"],
-    ["Command awareness","Current"]
-  ];
-  $("tradDecision").textContent = "Reviewing";
-  $("tradDecision").className = "metric-value warn";
-  updateComparison("Call opened: traditional teams begin verifying details while operational coordination remains visible.");
-}
+  let allTimers = [];
 
-function dispatchUnits() {
-  if (state.stage === "ready") startCall();
-  state.stage = "dispatch";
-  state.delay += 8;
-  state.manual += 2;
-  state.traditionalChecks = [
-    ["Confirm unit assignment","Dispatch"],
-    ["Update field status","Radio / mobile"],
-    ["Share ETA change","Call center"],
-    ["Supervisor confirmation","Pending"]
-  ];
-  state.aligned = [
-    ["Incident status","Units assigned"],
-    ["Dispatch posture","Active"],
-    ["Field / intake view","Aware"],
-    ["Command awareness","Current"]
-  ];
-  $("tradDecision").textContent = "Delayed";
-  $("tradDecision").className = "metric-value warn";
-  updateComparison("Units dispatched: traditional environment adds follow-up coordination while operational coordination remains visible.");
-}
+  function clearAllTimers() {
+    allTimers.forEach(clearTimeout);
+    allTimers = [];
+  }
 
-function escalateCall() {
-  if (state.stage === "ready") startCall();
-  state.stage = "escalated";
-  state.delay += 16;
-  state.manual += 3;
-  state.traditionalChecks = [
-    ["Confirm severity change","Dispatch"],
-    ["Reassign additional unit","Supervisor"],
-    ["Alert receiving intake","Phone / system"],
-    ["Update command summary","Pending"],
-    ["Validate latest status","Manual check"]
-  ];
-  state.aligned = [
-    ["Incident status","Escalated"],
-    ["Dispatch posture","Additional unit needed"],
-    ["Field / intake view","Preparing"],
-    ["Command awareness","Current"],
-    ["Decision posture","Ready"]
-  ];
-  $("tradDecision").textContent = "Waiting";
-  $("tradDecision").className = "metric-value bad";
-  updateComparison("Call escalated: traditional side waits for confirmation across teams while the command view remains current.");
-}
+  function setRows(id, items) {
+    setHTML(id, stepRows(items));
+  }
 
-function resolveCall() {
-  if (state.stage === "ready") startCall();
-  state.stage = "resolved";
-  state.delay += 6;
-  state.manual += 1;
-  state.traditionalChecks = [
-    ["Close incident record","Dispatch"],
-    ["Confirm field clearance","Field unit"],
-    ["Update final status","Call center"],
-    ["Supervisor review","Complete"]
-  ];
-  state.aligned = [
-    ["Incident status","Resolved"],
-    ["Dispatch posture","Closed"],
-    ["Field / intake view","Cleared"],
-    ["Command awareness","Closed"]
-  ];
-  $("tradDecision").textContent = "Confirmed";
-  $("tradDecision").className = "metric-value warn";
-  updateComparison("Incident resolved: traditional side performs final closeout checks while the response workflow closes with current status visibility.");
-}
+  function resetAllAction() {
+    clearAllTimers();
 
-function resetComparison() {
-  state.delay = 0;
-  state.manual = 0;
-  state.stage = "ready";
-  state.traditionalChecks = [];
-  state.aligned = [
-    ["Incident status","Ready"],
-    ["Dispatch posture","Ready"],
-    ["Command awareness","Ready"]
-  ];
-  $("tradDecision").textContent = "Pending";
-  $("tradDecision").className = "metric-value bad";
-  updateComparison("Demo ready. Start the call.");
-}
+    setText("allIncident", "Ready");
+    setText("allOps", "Standing by");
+    setText("allLogistics", "Ready");
+    setText("allFinance", "Stable");
 
-
-/* Final see-it-all action sequence */
-const allTimers = [];
-
-function clearAllTimers() {
-  while (allTimers.length) clearTimeout(allTimers.pop());
-}
-
-function setRows(id, items) {
-  $(id).innerHTML = stepRows(items);
-}
-
-function resetAllAction() {
-  clearAllTimers();
-  $("allIncident").textContent = "Ready";
-  $("allOps").textContent = "Standing by";
-  $("allLogistics").textContent = "Ready";
-  $("allFinance").textContent = "Stable";
-
-  setRows("allDispatchView", [
-    ["Call status","Ready"],
-    ["Unit assignment","Ready"],
-    ["Escalation posture","Normal"]
-  ]);
-  setRows("allFieldView", [
-    ["Field unit","Available"],
-    ["Coverage","Covered"],
-    ["Response posture","Ready"]
-  ]);
-  setRows("allLogisticsView", [
-    ["Vehicle","Ready"],
-    ["Equipment kit","Ready"],
-    ["Support route","Ready"]
-  ]);
-  setRows("allFinanceView", [
-    ["Overtime risk","Low"],
-    ["Delay exposure","Low"],
-    ["Command picture","Current"]
-  ]);
-  $("allActionLog").textContent = "Ready. Run the full action sequence.";
-}
-
-function runAllAction() {
-  clearAllTimers();
-
-  $("allIncident").textContent = "Call escalated";
-  $("allOps").textContent = "Units moving";
-  $("allLogistics").textContent = "Support check";
-  $("allFinance").textContent = "Watching";
-  setRows("allDispatchView", [
-    ["Call status","Escalated"],
-    ["Unit assignment","Primary unit sent"],
-    ["Escalation posture","Active"]
-  ]);
-  setRows("allFieldView", [
-    ["Field unit","En route"],
-    ["Coverage","Checking"],
-    ["Response posture","Active"]
-  ]);
-  setRows("allLogisticsView", [
-    ["Vehicle","Assigned"],
-    ["Equipment kit","Verifying"],
-    ["Support route","Checking"]
-  ]);
-  setRows("allFinanceView", [
-    ["Overtime risk","Watching"],
-    ["Delay exposure","Watching"],
-    ["Command picture","Current"]
-  ]);
-  $("allActionLog").textContent = "Step 1: The response call escalates inside the same company. Dispatch, field operations, logistics, finance, and command maintain visibility during the incident.";
-
-  allTimers.push(setTimeout(() => {
-    $("allIncident").textContent = "Escalation impact";
-    $("allOps").textContent = "Rebalancing";
-    $("allLogistics").textContent = "Rerouting";
-    $("allFinance").textContent = "Cost contained";
     setRows("allDispatchView", [
-      ["Call status","Escalated"],
-      ["Unit assignment","Backup added"],
-      ["Escalation posture","Controlled"]
+      ["Status", "Ready"],
+      ["Alignment", "Ready"],
+      ["Posture", "Normal"]
     ]);
-    setRows("allFieldView", [
-      ["Field unit","En route"],
-      ["Coverage","Backup assigned"],
-      ["Response posture","Maintained"]
-    ]);
-    setRows("allLogisticsView", [
-      ["Vehicle","Confirmed"],
-      ["Equipment kit","Staged"],
-      ["Support route","Adjusted"]
-    ]);
-    setRows("allFinanceView", [
-      ["Overtime risk","Contained"],
-      ["Delay exposure","Reduced"],
-      ["Command picture","Current"]
-    ]);
-    $("allActionLog").textContent = "Step 2: The escalation affects staffing, logistics, and cost exposure while reducing unnecessary follow-up work.";
-  }, 1200));
 
-  allTimers.push(setTimeout(() => {
-    $("allIncident").textContent = "Resolved";
-    $("allOps").textContent = "On track";
-    $("allLogistics").textContent = "Aligned";
-    $("allFinance").textContent = "Stable";
+    setRows("allFieldView", [
+      ["Team status", "Available"],
+      ["Coverage", "Covered"],
+      ["Posture", "Ready"]
+    ]);
+
+    setRows("allLogisticsView", [
+      ["Support status", "Ready"],
+      ["Resources", "Ready"],
+      ["Pathway", "Ready"]
+    ]);
+
+    setRows("allFinanceView", [
+      ["Impact", "Low"],
+      ["Workflow status", "Low"],
+      ["Operational picture", "Current"]
+    ]);
+
+    setText("allActionLog", "Ready. Run the continuity sequence.");
+  }
+
+  function runAllAction() {
+    clearAllTimers();
+
+    setText("allIncident", "Condition changed");
+    setText("allOps", "Aligning");
+    setText("allLogistics", "Checking");
+    setText("allFinance", "Watching");
+
     setRows("allDispatchView", [
-      ["Call status","Resolved"],
-      ["Unit assignment","Complete"],
-      ["Escalation posture","Closed"]
+      ["Condition status", "Changed"],
+      ["Alignment", "Updating"],
+      ["Visibility posture", "Active"]
     ]);
+
     setRows("allFieldView", [
-      ["Field unit","Clearing"],
-      ["Coverage","Covered"],
-      ["Response posture","On track"]
+      ["Team status", "Engaged"],
+      ["Coverage", "Checking"],
+      ["Posture", "Active"]
     ]);
+
     setRows("allLogisticsView", [
-      ["Vehicle","Recovered"],
-      ["Equipment kit","Accounted for"],
-      ["Support route","Closed"]
+      ["Support status", "Reviewing"],
+      ["Resources", "Checking"],
+      ["Pathway", "Watching"]
     ]);
+
     setRows("allFinanceView", [
-      ["Overtime risk","Avoided"],
-      ["Delay exposure","Low"],
-      ["Command picture","Closed"]
+      ["Impact", "Watching"],
+      ["Workflow status", "Watching"],
+      ["Operational picture", "Current"]
     ]);
-    $("allActionLog").textContent = "Step 3: The event resolves with call center, field operations, logistics, finance, and command maintaining current status visibility.";
-  }, 2400));
-}
 
+    setText("allActionLog", "Step 1: A representative condition changes and relevant views remain visible.");
 
-$("startBtn").addEventListener("click", startCall);
-$("dispatchBtn").addEventListener("click", dispatchUnits);
-$("escalateBtn").addEventListener("click", escalateCall);
-$("resolveBtn").addEventListener("click", resolveCall);
-$("resetBtn").addEventListener("click", resetComparison);
-$("seeAllBtn").addEventListener("click", runAllAction);
-$("resetAllBtn").addEventListener("click", resetAllAction);
+    allTimers.push(setTimeout(() => {
+      setText("allIncident", "Views aligned");
+      setText("allOps", "Current");
+      setText("allLogistics", "Aligned");
+      setText("allFinance", "Contained");
 
-resetAllAction();
+      setRows("allDispatchView", [
+        ["Condition status", "Aligned"],
+        ["Alignment", "Current"],
+        ["Visibility posture", "Controlled"]
+      ]);
+
+      setRows("allFieldView", [
+        ["Team status", "Current"],
+        ["Coverage", "Maintained"],
+        ["Posture", "Stable"]
+      ]);
+
+      setRows("allLogisticsView", [
+        ["Support status", "Confirmed"],
+        ["Resources", "Aligned"],
+        ["Pathway", "Stable"]
+      ]);
+
+      setRows("allFinanceView", [
+        ["Impact", "Contained"],
+        ["Workflow status", "Reduced"],
+        ["Operational picture", "Current"]
+      ]);
+
+      setText("allActionLog", "Step 2: Operational views stay aligned while the detail level remains intentionally high-level.");
+    }, 900));
+
+    allTimers.push(setTimeout(() => {
+      setText("allIncident", "Continuity preserved");
+      setText("allOps", "Stable");
+      setText("allLogistics", "Stable");
+      setText("allFinance", "Stable");
+
+      setRows("allDispatchView", [
+        ["Condition status", "Stable"],
+        ["Alignment", "Complete"],
+        ["Visibility posture", "Closed"]
+      ]);
+
+      setRows("allFieldView", [
+        ["Team status", "Aligned"],
+        ["Coverage", "Covered"],
+        ["Posture", "Stable"]
+      ]);
+
+      setRows("allLogisticsView", [
+        ["Support status", "Stable"],
+        ["Resources", "Accounted for"],
+        ["Pathway", "Closed"]
+      ]);
+
+      setRows("allFinanceView", [
+        ["Impact", "Low"],
+        ["Workflow status", "Low"],
+        ["Operational picture", "Current"]
+      ]);
+
+      setText("allActionLog", "Step 3: The sequence resolves at the outcome level without revealing implementation logic.");
+    }, 1800));
+  }
+
+  const bind = (id, handler) => {
+    const el = $(id);
+    if (el) el.addEventListener("click", handler);
+  };
+
+  bind("startBtn", startCall);
+  bind("dispatchBtn", dispatchUnits);
+  bind("escalateBtn", escalateCall);
+  bind("resolveBtn", resolveCall);
+  bind("resetBtn", resetComparison);
+  bind("seeAllBtn", runAllAction);
+  bind("resetAllBtn", resetAllAction);
+
+  resetComparison();
+  resetAllAction();
+});
 </script>
 </body>
 </html>
